@@ -1,0 +1,100 @@
+﻿
+
+
+<!doctype html>
+<html lang="en">
+
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/css/ol.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/build/ol.js"></script>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #map {
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            width: 100%;
+        }
+    </style>
+    <script src="https://unpkg.com/ol-mapbox-style@3.6.2/dist/olms.js" type="text/javascript"></script>
+    <title>Add a marker</title>
+</head>
+<body>
+    <style>
+        .marker {
+            display: block;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+    </style>
+    <div id="map"></div>
+    <script type="text/javascript">
+        var key = 'pk.c1d2f041d9d9584df6a6c8bbb1d50673	';   //Insert your LocationIQ access token here
+
+        olms('map', 'https://tiles.locationiq.com/v3/streets/vector.json?key=' + key).then(function (map) {
+
+
+
+            //Set the view for this map
+            map.setView(new ol.View({
+                center: ol.proj.fromLonLat([10.1791129832981, 36.88266445]),
+                zoom: 12
+            }));
+
+          
+
+            //to create a marker
+            var marker1 = new ol.Feature({
+                geometry: new ol.geom.Point(
+                    ol.proj.fromLonLat([10.0947037, 36.8113307])
+                ),
+            });
+
+            //to enhance style and add icon to the map
+            marker1.setStyle(new ol.style.Style({
+                image: new ol.style.Icon({
+                    scale: 0.1,               //scale to adjust the proportion of the icon
+                    src: '../Content/marker.png',           //link of the icon
+                })
+            }));
+
+            //to create a marker
+
+
+            var marker2 = new ol.Feature({
+                geometry: new ol.geom.Point(
+                    ol.proj.fromLonLat([-122.4727000, 37.786258])
+                ),
+            });
+
+            //to enhance style and add icon to the map
+            marker2.setStyle(new ol.style.Style({
+                image: new ol.style.Icon({
+                    scale: 0.1,                 //scale to adjust the proportion of the icon
+                    src: '../Content/free.png',             //link to the icon
+                })
+            }));
+
+            //Let’s include the markers and create a vector source with it
+            var vectorSource = new ol.source.Vector({
+                features: [marker1, marker2]
+            });
+
+            //Let’s create a vector layer, with a source created above
+            var vectorLayer = new ol.layer.Vector({
+                source: vectorSource,
+            });
+
+            map.addLayer(vectorLayer);
+
+        });
+
+    </script>
+</body>
+</html>

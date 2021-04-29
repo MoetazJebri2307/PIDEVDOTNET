@@ -1,0 +1,73 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+</head>
+<body>
+    <div>
+
+        @foreach (var item in Model)
+        {
+
+        }
+        if (model.available == "rent") {
+        var marker1 = new ol.Feature({
+        geometry: new ol.geom.Point(
+        ol.proj.fromLonLat([10.0947037, 36.8113307])
+        ),
+        });
+
+        //to enhance style and add icon to the map
+        marker1.setStyle(new ol.style.Style({
+        image: new ol.style.Icon({
+        scale: 0.5,               //scale to adjust the proportion of the icon
+        src: '../Content/marker.png',           //link of the icon
+        })
+        }));
+        }
+        else if (model.available == "sold") {
+        var marker1 = new ol.Feature({
+        geometry: new ol.geom.Point(
+        ol.proj.fromLonLat([10.0947037, 36.8113307])
+        ),
+        });
+
+        //to enhance style and add icon to the map
+        marker1.setStyle(new ol.style.Style({
+        image: new ol.style.Icon({
+        scale: 0.5,               //scale to adjust the proportion of the icon
+        src: '../Content/marker.png',           //link of the icon
+        })
+        }));
+        }
+        }
+
+
+
+
+
+
+        //to create a marker
+        var marker1 = new ol.Feature({
+        geometry: new ol.geom.Point(
+        ol.proj.fromLonLat([10.0947037, 36.8113307])
+        ),
+        });
+
+        //to enhance style and add icon to the map
+        marker1.setStyle(new ol.style.Style({
+        image: new ol.style.Icon({
+        scale: 0.5,               //scale to adjust the proportion of the icon
+        src: '../Content/marker.png',           //link of the icon
+        })
+        }));
+    </div>
+</body>
+</html>
